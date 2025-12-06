@@ -1,156 +1,193 @@
-# 🚦 Deep Reinforcement Learning for Traffic Signal Control  
-A DQN + Fluid Dynamic Simulation Framework with Adam and PSO Optimizer Comparison
-
-This repository implements a **Deep Reinforcement Learning (DRL)**–based adaptive traffic signal controller using **Deep Q-Networks (DQN)** and a **fluid-dynamic inspired traffic simulation** built with Taichi.  
-The project also includes a detailed comparison between **Adam** and **Particle Swarm Optimization (PSO)** for training DRL agents.
+Here is a **clean, professional, emoji-free** version of your README while keeping it clear, technical, and publication-ready:
 
 ---
 
-## 🔥 Key Features
+# Deep Reinforcement Learning for Traffic Signal Control
 
-- **Deep Q-Network (DQN)**–based traffic control  
-- **Fluid-density traffic simulation** using Taichi  
-- **Adaptive traffic light switching** to minimize congestion  
-- **Optimizer comparison:** Adam vs PSO  
-- **Visualization:** heatmaps, congestion plots, simulation GIFs  
-- Modular RL framework (`rl_agent/`, `simulation/`, `data_processing.py`)  
-- Reproducible experiments and evaluation scripts  
+A DQN and Fluid-Dynamic Simulation Framework with Adam and PSO Optimizer Comparison
+
+This repository implements a **Deep Reinforcement Learning (DRL)**–based adaptive traffic signal controller using **Deep Q-Networks (DQN)** combined with a **fluid-dynamic traffic simulation** built with Taichi.
+It also includes a detailed comparison between **Adam** and **Particle Swarm Optimization (PSO)** for training RL agents.
 
 ---
 
-## 📁 Project Structure
+## Key Features
 
+* DQN-based adaptive traffic signal control
+* Fluid-density traffic simulation using Taichi
+* Real-time traffic light switching to reduce congestion
+* Optimizer comparison: Adam vs PSO
+* Visualization support (heatmaps, congestion plots, simulation outputs)
+* Modular RL framework (`rl_agent/`, `simulation/`, `data_processing.py`)
+* Fully reproducible experiments and evaluation scripts
+
+---
+
+## Project Structure
+
+```
 SEAI project/
 │── data/
-│ ├── ngsim_density.csv
-│ └── (You must download NGSIM dataset manually – see below)
+│   ├── ngsim_density.csv
+│   └── (Download NGSIM dataset manually – see instructions below)
 │
 │── rl_agent/
-│ ├── agent.py
-│ ├── adam_agent.py
-│ ├── environment.py
-│ └── init.py
+│   ├── agent.py
+│   ├── adam_agent.py
+│   ├── environment.py
+│   └── __init__.py
 │
 │── simulation/
-│ ├── simulation_core.py
-│ └── init.py
+│   ├── simulation_core.py
+│   └── __init__.py
 │
 │── data_processing.py
 │── main.py
 │── traffic_gui_with_rl.py
 │── test_agent.py
-
+```
 
 ---
 
-# 📊 Dataset Access (IMPORTANT)
+# Dataset Access (Important)
 
-This project uses the **NGSIM vehicle trajectory dataset**, which is too large for GitHub (1.4 GB).  
-GitHub's file size limit is **100 MB**, so the dataset must be downloaded manually.
+This project uses the **NGSIM Vehicle Trajectory Dataset**, which is approximately 1.4 GB and exceeds GitHub’s 100 MB file size limit.
+It must be downloaded manually.
 
-### 📥 Download Dataset
-Official dataset link:  
-🔗 https://ops.fhwa.dot.gov/trafficanalysistools/ngsim.htm
+### Download Link
 
-You must download the file:
+Official dataset page:
+[https://ops.fhwa.dot.gov/trafficanalysistools/ngsim.htm](https://ops.fhwa.dot.gov/trafficanalysistools/ngsim.htm)
 
-- **Next_Generation_Simulation__NGSIM__Vehicle_Trajectories_and_Supporting_Data_20250318.csv**
+Required file:
 
-and place it here:
+* `Next_Generation_Simulation__NGSIM__Vehicle_Trajectories_and_Supporting_Data_20250318.csv`
 
+Place it in the `data/` directory:
 
-Directory will look like:
-
+```
 data/
 │── Next_Generation_Simulation__NGSIM__Vehicle_Trajectories_and_Supporting_Data_20250318.csv
 │── ngsim_density.csv
-
+```
 
 ---
 
-# 🛠️ Installation
+# Installation
 
 ### 1. Clone the repository
+
 ```bash
 git clone https://github.com/sonal2803/traffic-signal-drl.git
 cd traffic-signal-drl
-### INSTALL DEPENDENCIES 
+```
 
+### 2. Install dependencies
+
+If a `requirements.txt` file is available:
+
+```bash
 pip install -r requirements.txt
-If there is no requirements file, install manually:
+```
 
+Otherwise, install manually:
+
+```bash
 pip install numpy pandas taichi torch matplotlib opencv-python
+```
 
-▶️ Running the Simulation
-1. Preprocess data
+---
+
+# Running the Simulation
+
+### 1. Preprocess the dataset
+
+```bash
 python data_processing.py
+```
 
-2. Train the DQN agent
+### 2. Train the DQN agent
+
+```bash
 python main.py
+```
 
-3. Visualize or test the agent
+### 3. Visualize or test the trained agent
+
+```bash
 python traffic_gui_with_rl.py
-
+```
 
 or
 
+```bash
 python test_agent.py
+```
 
-🧠 DRL Approach
+---
 
-The project models traffic as a fluid density heatmap, and the agent learns:
+# DRL Approach
 
-When to switch signals
+Traffic is modeled as a **fluid density map**, and the agent learns optimal signal switching policies.
 
-When to keep signals
+The agent learns to:
 
-How to optimize flow in real time
+* Switch signals at the right time
+* Maintain green phases when beneficial
+* Optimize traffic flow dynamically
 
 Reward is based on:
 
-Queue lengths
+* Queue length reduction
+* Density minimization
+* Overall throughput improvement
 
-Density reduction
+---
 
-Throughput
+# Adam vs PSO Optimizer Study
 
-⚖️ Adam vs PSO Optimizer Study
+A complete evaluation of Adam and PSO optimizers was conducted for DQN training.
 
-This project includes a comparative study of:
+| Optimizer | Convergence Speed | Stability   | Reward Score |
+| --------- | ----------------- | ----------- | ------------ |
+| Adam      | Faster            | More stable | Higher       |
+| PSO       | Slower            | Oscillatory | Lower        |
 
-Optimizer	Convergence Speed	Stabilization	Reward Score
-Adam	Faster	More stable	Higher
-PSO	Slower	Oscillatory	Lower
+**Conclusion:**
+Adam consistently outperforms PSO for DQN-based traffic control across all test scenarios.
 
-Result:
-➡️ Adam outperforms PSO for DQN-based traffic control in almost all scenarios.
+---
 
-📈 Results Summary
+# Results Summary
 
-Significant reduction in congestion metrics
+* Significant reduction in congestion
+* Higher throughput
+* Smoother phase transitions
+* Clear visualization of agent learning behavior
+* Superior performance using Adam
 
-Improved average throughput
+### Future Enhancements
 
-Smoother traffic phase transitions
+* Multi-agent reinforcement learning
+* Integration of real-time sensor data
+* DDPG-based continuous control
+* Graph neural network (GNN)–based traffic modeling
 
-Clear visualization of agent learning
+---
 
-Adam consistently performs better than PSO
+# Author
 
-Future extensions:
-
-Multi-agent RL
-
-Real-time sensor integration
-
-Deep deterministic policy gradients (DDPG)
-
-Graph neural network traffic modeling
-
-👤 Author
-
-Sonal Panda
+**Sonal Panda**
 B.Tech CSE (AIML), SRM Institute of Science and Technology
-📧 sonalpanda28@gmail.com
+Email: **[sonalpanda28@gmail.com](mailto:sonalpanda28@gmail.com)**
+GitHub: **[https://github.com/sonal2803](https://github.com/sonal2803)**
 
-🔗 GitHub: https://github.com/sonal2803
+---
+
+If you want, I can also:
+
+* Add diagrams or architecture images
+* Add badges (build, license, python version)
+* Rewrite it to be more research-paper style or more industry-style
+
+Just tell me!
