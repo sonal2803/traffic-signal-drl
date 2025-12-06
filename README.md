@@ -1,7 +1,3 @@
-Here is a **clean, professional, emoji-free** version of your README while keeping it clear, technical, and publication-ready:
-
----
-
 # Deep Reinforcement Learning for Traffic Signal Control
 
 A DQN and Fluid-Dynamic Simulation Framework with Adam and PSO Optimizer Comparison
@@ -182,12 +178,3 @@ B.Tech CSE (AIML), SRM Institute of Science and Technology
 Email: **[sonalpanda28@gmail.com](mailto:sonalpanda28@gmail.com)**
 GitHub: **[https://github.com/sonal2803](https://github.com/sonal2803)**
 
----
-
-If you want, I can also:
-
-* Add diagrams or architecture images
-* Add badges (build, license, python version)
-* Rewrite it to be more research-paper style or more industry-style
-
-Just tell me!
